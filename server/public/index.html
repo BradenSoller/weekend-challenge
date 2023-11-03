@@ -10,17 +10,17 @@
     <h1>Server-Side Calculator</h1>
 
     <form data-testid="calculator">
-      <input placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
-      <input placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+      <input placeholder="First Number" id = 'num1'>
+      <button onclick="orderOfOperations(event)">+</button>
+      <button onclick="orderOfOperations(event)">-</button>
+      <button onclick="orderOfOperations(event)">*</button>
+      <button onclick="orderOfOperations(event)">/</button>
+      <input placeholder="Second Number" id = 'num2'>
+      <button onclick="sumOfOperations(event)">=</button>
+      <button onclick="clearHistory(event)">C</button>
     </form>
 
-    <section data-testid="recentResult">
+    <section data-testid="recentResult" id = recentResult>
       <!-- The most recent calculation result goes here. -->
     </section>
 

@@ -13,10 +13,14 @@ let calculations = []
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
-
+app.get('/calculations', (req, res) => {
+  console.log('POST request received!');
+})
 // POST /calculations
-
-
+app.post('/calculations', (req, res) => {
+  console.log('POST request received!');
+  console.log('POST request received!');
+})
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
 
