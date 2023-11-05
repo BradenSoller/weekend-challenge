@@ -5,10 +5,10 @@ let PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(express.static('server/public'));
 
-
+//array to store math
 let calculations = [];
  
-
+//doing the math
 function orderOfOperations(numOne, numTwo, operator) {
   console.log('ran orderOfOperations()');//
   console.log('numOne: ', numOne);
