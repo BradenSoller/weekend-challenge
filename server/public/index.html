@@ -9,22 +9,24 @@
   <body>
     <h1>Server-Side Calculator</h1>
 
-    <form data-testid="calculator">
-      <input placeholder="First Number" id = 'num1'>
-      <button onclick="orderOfOperations(event)">+</button>
-      <button onclick="orderOfOperations(event)">-</button>
-      <button onclick="orderOfOperations(event)">*</button>
-      <button onclick="orderOfOperations(event)">/</button>
-      <input placeholder="Second Number" id = 'num2'>
-      <button onclick="sumOfOperations(event)">=</button>
+    <form data-testid="calculator" id="calculator">
+      <input placeholder="First Number" id = 'numOne'>
+      <button onclick="getOperator(event, '+')">+</button>
+      <button onclick="getOperator(event, '-')">-</button>
+      <button onclick="getOperator(event, '*')">*</button>
+      <button onclick="getOperator(event,  '/')">/</button>
+      <input placeholder="Second Number" id = 'numTwo'>
+      <button onclick="handleSubmit(event)">=</button>
       <button onclick="clearHistory(event)">C</button>
     </form>
-
-    <section data-testid="recentResult" id = recentResult>
+<!-- onclick="sumOfOperations(event)" -->
+    <!-- onclick="clearHistory(event)" -->
+    <section data-testid="recentResult" id = 'recentResult'>
       <!-- The most recent calculation result goes here. -->
+      <h2>0</h2>
     </section>
 
-    <section data-testid="resultHistory">
+    <section data-testid="resultHistory" id = 'resultHistory'>
       <!-- The list of calculation results goes here. -->
     </section>
   </body>
