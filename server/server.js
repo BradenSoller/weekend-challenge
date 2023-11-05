@@ -8,7 +8,7 @@ app.use(express.static('server/public'));
 // Global variable that will contain all of the
 // calculation objects:
 let calculations = [];
-  console.log(calculations)
+ 
   
 // function orderOfOperations(cal) {
 //     if (cal.operator === "+") {
@@ -21,20 +21,20 @@ let calculations = [];
 //        cal.result = cal.numOne * cal.numTwo
 //     }
 // }
-function orderOfOperations(numOne, numTwo, operation) {
+function orderOfOperations(numOne, numTwo, operator) {
   console.log('ran orderOfOperations()');
   console.log('numOne: ', numOne);
   console.log('numTwo: ', numTwo);
-  console.log('operation: ', operation);
+  console.log('operation: ', operator);
 
-  if (operation === "/")
-    return parseInt(numOne) / parseInt(numTwo)
-  else if (operation === '+')
-    return parseInt(numOne) + parseInt(numTwo)
-  else if (operation === "-")
-    return parseInt(numOne) - parseInt(numTwo)
-  else if (operation === "*")
-    return parseInt(numOne) * parseInt(numTwo)
+  if (operator === "/")
+    return Number(numOne) / Number(numTwo)
+  else if (operator === '+')
+    return Number(numOne) + Number(numTwo)
+  else if (operator === "-")
+    return Number(numOne) - Number(numTwo)
+  else if (operator === "*")
+    return Number(numOne) * Number(numTwo)
 }
 
 // Here's a wonderful place to make some routes:
@@ -49,15 +49,20 @@ app.get('/calculations', (req, res) => {
 app.post('/calculations', (req, res) => {
   console.log('POST request received!');
   console.log('req.body in POST, req.body:', req.body);
+  // orderOfOperations(calculations) 
   let newCalculations = req.body;
-  orderOfOperations(newCalculations)
   // let calculated = orderOfOperations(req.body.numOne, req.body.numTwo, req.body.operator);
   // console.log('calculated: ', calculated);
-  // calculations.push(calculated)
+  calculations.push(newCalculations)
   // res.sendStatus(201)
   // res.send(calculations)
+  let newAnwser = calculations[calculations.length - 1]
+
+  
+  newAnwser.result = orderOfOperations(newAnwser.numOne, newAnwser.numTwo, newAnwser.operation)
+
   res.sendStatus(201)
-})
+});
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
@@ -65,7 +70,7 @@ app.post('/calculations', (req, res) => {
 // Makes it so you don't have to kill the server
 // on 5000 in order to run the tests:
 if (process.env.NODE_ENV === 'test') {
-  PORT = 5000;
+  PORT = 5001;
 }
 
 // This starts the server...but also stores it in a variable.
