@@ -5,24 +5,12 @@ let PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(express.static('server/public'));
 
-// Global variable that will contain all of the
-// calculation objects:
+
 let calculations = [];
  
-  
-// function orderOfOperations(cal) {
-//     if (cal.operator === "+") {
-//      result.push (cal.result = cal.numOne + cal.numTwo)
-//     } else if (cal.operator === "-") {
-//       cal.result = cal.numOne - cal.numTwo
-//     } else if (cal.operator === '/') {
-//       cal.result = cal.numOne / cal.numTwo
-//     } else if (cal.operator === '*') {
-//        cal.result = cal.numOne * cal.numTwo
-//     }
-// }
+
 function orderOfOperations(numOne, numTwo, operator) {
-  console.log('ran orderOfOperations()');
+  console.log('ran orderOfOperations()');//
   console.log('numOne: ', numOne);
   console.log('numTwo: ', numTwo);
   console.log('operation: ', operator);
@@ -46,20 +34,23 @@ app.get('/calculations', (req, res) => {
   res.send(calculations);
 });
 // POST /calculations
-app.post('/calculations', (req, res) => {
-  console.log('POST request received!');
-  console.log('req.body in POST, req.body:', req.body);
-  
-  let newCalculation = req.body;
 
+app.post('/calculations', (req, res) => {
+  console.log('Post request recieved');
+  let newCalculation = req.body
+  console.log(newCalculation);
+  //puts data in array
   calculations.push(newCalculation)
 
-  let newAnwser = calculations[calculations.length-1]
+//gets the last object property
+let newAnwser = calculations[calculations.length-1];
 
-  
-  newAnwser.result = orderOfOperations(newAnwser.numOne, newAnwser.numTwo, newAnwser.operation)
+//MATH!!!!!!
+newAnwser.result = orderOfOperations(newAnwser.numOne, newAnwser.numTwo, newAnwser.operator);
 
-  result = newCalculation.result
+console.log('expected result', newAnwser.result);
+console.log('calulation Arr', calculations);
+
   res.sendStatus(201)
 });
 

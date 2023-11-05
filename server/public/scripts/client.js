@@ -10,14 +10,7 @@ function getHistory() {
         let calculations = response.data 
         renderCalulation(calculations)
         console.log('this data is being rendered', calculations);
-                           // axios({
-                          //     method: 'GET',
-                          //     url: '/calculations'
-                          // }).then((response) => {
-                          //     console.log('Confirmed server recieved form submission.')
-                          //     let calculations = response.data
-                          //     renderCalulation(calculations)
-
+                         
     });
 }
 
@@ -50,61 +43,27 @@ function handleSubmit(event) {
           getHistory()
          
       })
-  } // hey server, take this info pls
-    /////axios({
-     //////   method: 'POST',
-     //////   url: '/calculations',
-      ///////  data: newCalculation
-   //////// }).then((response) => {
-       //////// console.log('Confirmed server recieved form submission.')
-        // call info retrieval 
-        //////getHistory()
-       ///// console.log('response: ',);
-        // renderCalulation(response.data)
-        // }).catch((err) => {
-        //     console.error('error caught in axios call, err: ', err);
-        // });
-   //////// });
-///////}
+  } 
 
 //making operator work
-function Operation(event, op) {
+function Operation(event, oper) {
     event.preventDefault()
-    if (op === '+') {
+    if (oper === '+') {
         operator = '+'
         console.log(operator);
-    } else if (op === '-') {
+    } else if (oper === '-') {
         operator = '-'
         console.log(operator);
-    } else if (op === '*') {
+    } else if (oper === '*') {
         operator = '*'
         console.log(operator);
-    } else if (op === '/') {
+    } else if (oper === '/') {
         operator = '/'
         console.log(operator);
     }
     return operator;
 }
-////////function getOperator(event, operator) {
-   ////// console.log('hit getOperator()');
-   //////// console.log('event: ', event);
-   ///////// console.log('operator: ', operator);
-   ///////// event.preventDefault()
-    //////clickedOperator = operator;
-///////}
-//get back calculations from server
-// function getCalculations() {
-//     console.log('getCalculations() ran');
-//     axios({
-//         method: 'GET',
-//         url: '/calculations'
-//     }).then(function (response) {
-//         console.log('GET response recieved from server! Response:', response);
-//         let calculations = response.data;
-//         console.log('Parsing data from response package. Items');
-//         renderCalulation(calculations)
-//     })
-// }
+
 
     function renderCalulation(calculations) {
         console.log('render');
@@ -113,17 +72,16 @@ function Operation(event, op) {
        
         recentResult.innerHTML = '';
         resultHistory.innerHTML = '';
-        // const domElement = document.getElementById('resultHistory');
+      //gets last object property to appear on DOM
         console.log('calculation: ', calculations);
         recentResult.innerHTML =
-            `<b>${calculations[calculations.length - 1].result} </b>`
-        // resultHistory += 
-
-        for (calc of calculations) {
+            `<h2><b>${calculations[calculations.length - 1].result} </b></h2>`
+   //loops through calculations object and shows in on the DOM
+        for (calc of calculations) 
             resultHistory.innerHTML +=
                 `<ol>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}</ol> `
        
-        }
+        
     } 
     
 
