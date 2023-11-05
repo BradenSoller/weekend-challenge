@@ -48,6 +48,7 @@ function handleSubmit(event) {
       }).then((response) => {
         console.log('did this work?');
           getHistory()
+         
       })
   } // hey server, take this info pls
     /////axios({
@@ -120,7 +121,7 @@ function Operation(event, op) {
 
         for (calc of calculations) {
             resultHistory.innerHTML +=
-                `<ol>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result} `
+                `<ol>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}</ol> `
        
         }
     } 

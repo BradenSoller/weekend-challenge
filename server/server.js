@@ -49,18 +49,17 @@ app.get('/calculations', (req, res) => {
 app.post('/calculations', (req, res) => {
   console.log('POST request received!');
   console.log('req.body in POST, req.body:', req.body);
-  // orderOfOperations(calculations) 
-  let newCalculations = req.body;
-  // let calculated = orderOfOperations(req.body.numOne, req.body.numTwo, req.body.operator);
-  // console.log('calculated: ', calculated);
-  calculations.push(newCalculations)
-  // res.sendStatus(201)
-  // res.send(calculations)
-  let newAnwser = calculations[calculations.length - 1]
+  
+  let newCalculation = req.body;
+
+  calculations.push(newCalculation)
+
+  let newAnwser = calculations[calculations.length-1]
 
   
   newAnwser.result = orderOfOperations(newAnwser.numOne, newAnwser.numTwo, newAnwser.operation)
 
+  result = newCalculation.result
   res.sendStatus(201)
 });
 
